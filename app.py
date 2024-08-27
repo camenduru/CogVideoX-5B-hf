@@ -304,6 +304,8 @@ with gr.Blocks() as demo:
         generate,
         inputs=[prompt, seed_param, enable_scale, enable_rife],
         outputs=[video_output, download_video_button, download_gif_button, seed_text],
+        concurrency_limit=8,
+        queue=False,
     )
 
     enhance_button.click(enhance_prompt_func, inputs=[prompt], outputs=[prompt])
